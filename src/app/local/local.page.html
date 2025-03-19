@@ -1,0 +1,22 @@
+<div class="container">
+  <!-- Header con imagen y botón de retroceso -->
+  <header class="header">
+    <button class="back-button" (click)="goBack()">←</button>
+    <img src="assets/sushito.jpeg" alt="Restaurant Header" class="header-image">
+  </header>
+
+  <!-- Lista de platillos con scroll -->
+  <main class="main-content scrollable">
+    <div class="dish-card" *ngFor="let dish of dishes">
+      <!-- Imagen del platillo -->
+      <img [src]="dish.image" alt="{{ dish.title }}" class="dish-image">
+
+      <!-- Detalles del platillo -->
+      <div class="dish-details">
+        <h4 class="dish-title">{{ dish.title }}</h4>
+        <p class="dish-description">{{ dish.description }}</p>
+        <p class="dish-price">{{ dish.price | currency }}</p>
+      </div>
+    </div>
+  </main>
+</div>

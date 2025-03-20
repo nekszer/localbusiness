@@ -7,6 +7,51 @@
 
   <!-- Lista de platillos con scroll -->
   <main class="main-content scrollable">
+
+    <div class="dish-card">
+      <!-- Información del restaurante -->
+      <div class="restaurant-info">
+        <h1 class="restaurant-title">“El Rey” Rosticeria</h1>
+        <div class="restaurant-rating">
+          <span class="rating-stars">★★★★★</span>
+          <span class="rating-value">&nbsp;&nbsp;5,0</span>
+          <span class="rating-count">&nbsp;&nbsp;(10 reseñas)</span>
+        </div>
+        <p class="restaurant-category">Restaurante especializado en pollo</p>
+        <p class="restaurant-hours">Cerrado · Abre a las 10 a.m. del jue</p>
+        <p class="restaurant-whatsapp">WhatsApp: <a href="tel:+525587654321">+52 55 8765 4321</a></p>
+        <p class="restaurant-address">C. Aldama 131, Centro, 56100 Texcoco de Mora, Méx.</p>
+      </div>
+    </div>
+
+    <div class="dish-card">
+      <div class="review-container">
+        <h4 class="review-title"><b>Resumen de reseñas</b></h4>
+        <div class="rating-summary">
+          <div class="rating-stars">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+          <div class="rating-value">5.0</div>
+        </div>
+
+        <div class="reviews-list">
+          <div class="review">
+            <p class="review-text">“Jamás pidas pasta a la boloñesa, a menos que quieras picadillo con pasta.”</p>
+          </div>
+          <div class="review">
+            <p class="review-text">“Excelente servicio, buen ambiente y buena comida.”</p>
+          </div>
+          <div class="review">
+            <p class="review-text">“Buen lugar para desayunar buffet y sobre todo económico.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="dish-card" *ngFor="let dish of dishes">
       <!-- Imagen del platillo -->
       <img [src]="dish.image" alt="{{ dish.title }}" class="dish-image">

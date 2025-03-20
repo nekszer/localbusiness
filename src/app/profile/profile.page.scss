@@ -1,0 +1,39 @@
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+  
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 10px;
+    }
+  
+    .profile-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+    }
+  
+    .profile-email {
+      font-size: 16px;
+      color: #666;
+      margin: 5px 0;
+    }
+  }
+  
+  ion-list {
+    ion-item {
+      --padding-start: 10px;
+      --padding-end: 10px;
+      --min-height: 50px;
+  
+      ion-icon {
+        font-size: 20px;
+        color: #666;
+      }
+  
+      ion-label {
+        font-size: 16px;
+      }
+    }
+  }

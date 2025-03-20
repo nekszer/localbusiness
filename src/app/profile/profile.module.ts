@@ -14,6 +14,7 @@ import { ProfilePage } from './profile.page';
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule
-  ]
+  ],
+  declarations: [ProfilePage]
 })
 export class ProfilePageModule {}

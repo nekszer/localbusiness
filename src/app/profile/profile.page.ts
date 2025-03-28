@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Auth0Service } from '../services/auth.service';
 import { Router } from '@angular/router';
-
+import { BehaviorSubject, tap } from 'rxjs';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -10,15 +11,41 @@ import { Router } from '@angular/router';
 })
 export class ProfilePage implements OnInit {
 
-  isLoggedId : boolean = false;
+  // Variable para almacenar el estado de autenticación
+  isLoggedIn: boolean = false;
+
+  name: string | undefined = '';
+  mail: string | undefined = '';
+  image: string | undefined= '';
 
   constructor(
     private alertController: AlertController,
-    private router: Router
-  ) {}
+    private router: Router,
+    private auth0Service: Auth0Service
+  ) {
+    // Suscribirse al estado de autenticación de Auth0
+  }
 
-  ngOnInit() {
-    this.isLoggedId = true;
+  ngOnInit(): void {
+
+    this.auth0Service.checkAuthState(); // Verifica la sesión al cargar
+
+    this.auth0Service.isAuthenticated$.pipe(
+      tap((isAuthenticated: any) => console.log('Auth state:', isAuthenticated))
+    ).subscribe((isAuthenticated) => {
+      this.isLoggedIn = isAuthenticated;
+    });
+
+    this.auth0Service.user$.subscribe(user => {
+      console.log(user);
+      this.name = user?.name;
+      this.mail = user?.email;
+      this.image = user?.picture;
+    });
+  }
+
+  login() : void {
+    this.auth0Service.login();
   }
 
   async logout() {
@@ -34,7 +61,8 @@ export class ProfilePage implements OnInit {
           text: 'Cerrar Sesión',
           handler: () => {
             // Lógica para cerrar sesión
-            this.router.navigate(['/login']); // Redirige al login
+            this.auth0Service.logout();
+            this.router.navigate(['/profile']); // Redirige al login
           },
         },
       ],

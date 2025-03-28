@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Formulario de Restaurante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form>
+    <!-- Imagen de portada -->
+    <ion-item>
+      <ion-label>Imagen de portada</ion-label>
+      <ion-button fill="clear" (click)="takePicture()">
+        <ion-icon slot="start" name="camera"></ion-icon>
+        Seleccionar imagen
+      </ion-button>
+    </ion-item>
+    <ion-img *ngIf="restaurant.coverImage" [src]="restaurant.coverImage"></ion-img>
+
+    <!-- Selector de ubicación -->
+    <ion-item>
+      <ion-label>Ubicación GPS</ion-label>
+      <!--
+      <ion-button fill="clear" (click)="selectLocation()">
+        <ion-icon slot="start" name="pin"></ion-icon>
+        Seleccionar ubicación
+      </ion-button>
+      -->
+    </ion-item>
+    <ion-item *ngIf="restaurant.location.lat !== 0">
+      <ion-label>Coordenadas:</ion-label>
+      <ion-text>Lat: {{restaurant.location.lat | number:'1.4-4'}}, Lng: {{restaurant.location.lng | number:'1.4-4'}}</ion-text>
+    </ion-item>
+
+    <!-- Nombre -->
+    <ion-item>
+      <ion-label position="floating">Nombre del restaurante</ion-label>
+      <ion-input [(ngModel)]="restaurant.name" name="name" required></ion-input>
+    </ion-item>
+
+    <!-- Descripción -->
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="restaurant.description" name="description" rows="3"></ion-textarea>
+    </ion-item>
+
+    <!-- WhatsApp -->
+    <ion-item>
+      <ion-label position="floating">WhatsApp</ion-label>
+      <ion-input [(ngModel)]="restaurant.whatsapp" name="whatsapp" type="tel"></ion-input>
+    </ion-item>
+
+    <!-- Dirección -->
+    <ion-item>
+      <ion-label position="floating">Dirección completa</ion-label>
+      <ion-textarea [(ngModel)]="restaurant.address" name="address" rows="2"></ion-textarea>
+    </ion-item>
+
+    <!-- Rating -->
+    <ion-item>
+      <ion-label>Calificación</ion-label>
+      <ion-input [(ngModel)]="restaurant.rating" name="rating" type="number" min="0" max="5" step="0.1"></ion-input>
+    </ion-item>
+
+    <!-- Reseñas -->
+    <ion-item>
+      <ion-label>Número de reseñas</ion-label>
+      <ion-input [(ngModel)]="restaurant.reviews" name="reviews" type="number"></ion-input>
+    </ion-item>
+
+    <!-- Botón de enviar -->
+    <ion-button expand="block" type="submit" class="ion-margin-top">
+      Guardar Restaurante
+    </ion-button>
+  </form>
+</ion-content>

@@ -38,6 +38,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'tabs/map',
     pathMatch: 'full'
+  },
+  {
+    path: 'restaurant',
+    loadChildren: () => import('./pages/restaurant-form/restaurant-form.module').then( m => m.RestaurantFormPageModule)
   }
 ];
 

@@ -4,17 +4,22 @@
     </ion-toolbar>
   </ion-header>
   
-  <ion-content class="ion-padding" *ngIf="!isLoggedId">
-    
+  <ion-content class="ion-padding" *ngIf="!isLoggedIn">
+    <ion-list>
+      <ion-item (click)="login()">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        <ion-label>Acceder</ion-label>
+      </ion-item>
+    </ion-list>
   </ion-content>
 
-  <ion-content class="ion-padding" *ngIf="isLoggedId">
+  <ion-content class="ion-padding" *ngIf="isLoggedIn">
     <div class="profile-header">
       <ion-avatar class="profile-avatar">
-        <img src="assets/images/profile.jpg" alt="Profile Image" />
+        <img src="{{image}}" alt="Profile Image" />
       </ion-avatar>
-      <h2 class="profile-name">Jhonson King</h2>
-      <p class="profile-email">jhonking&#64;gmail.com</p>
+      <h2 class="profile-name">{{name}}</h2>
+      <p class="profile-email">{{mail}}</p>
     </div>
   
     <ion-list>
@@ -29,8 +34,8 @@
       </ion-item>
   
       <ion-item>
-        <ion-icon name="download-outline" slot="start"></ion-icon>
-        <ion-label>Downloads</ion-label>
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        <ion-label>Mi negocio</ion-label>
       </ion-item>
   
       <ion-item>

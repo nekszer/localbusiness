@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Importa el módulo de Auth0
 import { AuthModule } from '@auth0/auth0-angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { AuthModule } from '@auth0/auth0-angular';
       },
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [ Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
